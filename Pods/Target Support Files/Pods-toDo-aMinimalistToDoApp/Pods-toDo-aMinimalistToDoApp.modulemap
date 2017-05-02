@@ -1,0 +1,6 @@
+framework module Pods_toDo_aMinimalistToDoApp {
+  umbrella header "Pods-toDo-aMinimalistToDoApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
