@@ -8,31 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		2714FE5C1EB7C24C009873BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714FE5B1EB7C24C009873BB /* AppDelegate.swift */; };
-		2714FE5E1EB7C24C009873BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714FE5D1EB7C24C009873BB /* ViewController.swift */; };
 		2714FE611EB7C24C009873BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2714FE5F1EB7C24C009873BB /* Main.storyboard */; };
 		2714FE631EB7C24C009873BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2714FE621EB7C24C009873BB /* Assets.xcassets */; };
 		2714FE661EB7C24C009873BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2714FE641EB7C24C009873BB /* LaunchScreen.storyboard */; };
 		2714FE721EB8D7EE009873BB /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714FE711EB8D7EE009873BB /* RoundedView.swift */; };
 		2714FE741EB8D867009873BB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714FE731EB8D867009873BB /* MainVC.swift */; };
-		275978EB1EB8E23B00DFA92F /* GoogleService-Info (3).plist in Resources */ = {isa = PBXBuildFile; fileRef = 275978EA1EB8E23B00DFA92F /* GoogleService-Info (3).plist */; };
 		275978ED1EB8E26500DFA92F /* TextFieldMaxLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275978EC1EB8E26500DFA92F /* TextFieldMaxLength.swift */; };
 		275978EF1EB8E27F00DFA92F /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275978EE1EB8E27F00DFA92F /* ToDoCell.swift */; };
+		275978F11EB8E40200DFA92F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275978F01EB8E40200DFA92F /* ToDoItem.swift */; };
+		275978F31EB8E8C700DFA92F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275978F21EB8E8C700DFA92F /* DataService.swift */; };
+		275978F51EB8E99E00DFA92F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 275978F41EB8E99E00DFA92F /* GoogleService-Info.plist */; };
+		27C577101EBA4A9F00745656 /* HTTPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C5770F1EBA4A9F00745656 /* HTTPService.m */; };
+		27C577151EBA59D200745656 /* MainVC+LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C577141EBA59D200745656 /* MainVC+LoginUser.swift */; };
 		3E13C2DB7DB90DD405905164 /* Pods_toDo_aMinimalistToDoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F962CAADE4F06DE11A9BDE74 /* Pods_toDo_aMinimalistToDoApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2714FE581EB7C24C009873BB /* toDo-aMinimalistToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "toDo-aMinimalistToDoApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2714FE5B1EB7C24C009873BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2714FE5D1EB7C24C009873BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2714FE601EB7C24C009873BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2714FE621EB7C24C009873BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2714FE651EB7C24C009873BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2714FE671EB7C24C009873BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2714FE711EB8D7EE009873BB /* RoundedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		2714FE731EB8D867009873BB /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		275978EA1EB8E23B00DFA92F /* GoogleService-Info (3).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info (3).plist"; path = "../../../Downloads/GoogleService-Info (3).plist"; sourceTree = "<group>"; };
 		275978EC1EB8E26500DFA92F /* TextFieldMaxLength.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldMaxLength.swift; sourceTree = "<group>"; };
 		275978EE1EB8E27F00DFA92F /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		275978F01EB8E40200DFA92F /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		275978F21EB8E8C700DFA92F /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		275978F41EB8E99E00DFA92F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		27C5770F1EBA4A9F00745656 /* HTTPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPService.m; sourceTree = "<group>"; };
+		27C577111EBA4AAC00745656 /* HTTPService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPService.h; sourceTree = "<group>"; };
+		27C577121EBA4AE100745656 /* toDo-aMinimalistToDoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "toDo-aMinimalistToDoApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		27C577141EBA59D200745656 /* MainVC+LoginUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainVC+LoginUser.swift"; sourceTree = "<group>"; };
 		80239C45B27F07AEEC623026 /* Pods-toDo-aMinimalistToDoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toDo-aMinimalistToDoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-toDo-aMinimalistToDoApp/Pods-toDo-aMinimalistToDoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C00643330097B1F83C4C6BBD /* Pods-toDo-aMinimalistToDoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toDo-aMinimalistToDoApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-toDo-aMinimalistToDoApp/Pods-toDo-aMinimalistToDoApp.release.xcconfig"; sourceTree = "<group>"; };
 		F962CAADE4F06DE11A9BDE74 /* Pods_toDo_aMinimalistToDoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_toDo_aMinimalistToDoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +61,7 @@
 		2714FE4F1EB7C24C009873BB = {
 			isa = PBXGroup;
 			children = (
+				27C577131EBA59B600745656 /* Extensions */,
 				2714FE701EB8D7CF009873BB /* Services */,
 				2714FE6F1EB8D7CA009873BB /* Model */,
 				2714FE6E1EB8D7C4009873BB /* View */,
@@ -76,12 +85,11 @@
 			isa = PBXGroup;
 			children = (
 				2714FE5B1EB7C24C009873BB /* AppDelegate.swift */,
-				2714FE5D1EB7C24C009873BB /* ViewController.swift */,
 				2714FE5F1EB7C24C009873BB /* Main.storyboard */,
 				2714FE621EB7C24C009873BB /* Assets.xcassets */,
 				2714FE641EB7C24C009873BB /* LaunchScreen.storyboard */,
 				2714FE671EB7C24C009873BB /* Info.plist */,
-				275978EA1EB8E23B00DFA92F /* GoogleService-Info (3).plist */,
+				275978F41EB8E99E00DFA92F /* GoogleService-Info.plist */,
 			);
 			path = "toDo-aMinimalistToDoApp";
 			sourceTree = "<group>";
@@ -107,6 +115,7 @@
 		2714FE6F1EB8D7CA009873BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				275978F01EB8E40200DFA92F /* ToDoItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -114,8 +123,20 @@
 		2714FE701EB8D7CF009873BB /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				275978F21EB8E8C700DFA92F /* DataService.swift */,
+				27C5770F1EBA4A9F00745656 /* HTTPService.m */,
+				27C577111EBA4AAC00745656 /* HTTPService.h */,
+				27C577121EBA4AE100745656 /* toDo-aMinimalistToDoApp-Bridging-Header.h */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		27C577131EBA59B600745656 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				27C577141EBA59D200745656 /* MainVC+LoginUser.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		592E57FF150A13F7B444879E /* Pods */ = {
@@ -171,6 +192,7 @@
 					2714FE571EB7C24C009873BB = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = PYE5SX7JJS;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -199,7 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2714FE661EB7C24C009873BB /* LaunchScreen.storyboard in Resources */,
-				275978EB1EB8E23B00DFA92F /* GoogleService-Info (3).plist in Resources */,
+				275978F51EB8E99E00DFA92F /* GoogleService-Info.plist in Resources */,
 				2714FE631EB7C24C009873BB /* Assets.xcassets in Resources */,
 				2714FE611EB7C24C009873BB /* Main.storyboard in Resources */,
 			);
@@ -260,12 +282,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2714FE5E1EB7C24C009873BB /* ViewController.swift in Sources */,
 				275978EF1EB8E27F00DFA92F /* ToDoCell.swift in Sources */,
+				27C577101EBA4A9F00745656 /* HTTPService.m in Sources */,
+				275978F11EB8E40200DFA92F /* ToDoItem.swift in Sources */,
 				2714FE741EB8D867009873BB /* MainVC.swift in Sources */,
+				27C577151EBA59D200745656 /* MainVC+LoginUser.swift in Sources */,
 				2714FE5C1EB7C24C009873BB /* AppDelegate.swift in Sources */,
 				2714FE721EB8D7EE009873BB /* RoundedView.swift in Sources */,
 				275978ED1EB8E26500DFA92F /* TextFieldMaxLength.swift in Sources */,
+				275978F31EB8E8C700DFA92F /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,11 +414,14 @@
 			baseConfigurationReference = 80239C45B27F07AEEC623026 /* Pods-toDo-aMinimalistToDoApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PYE5SX7JJS;
 				INFOPLIST_FILE = "toDo-aMinimalistToDoApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bekahlynnbaker.toDoAMinimalistToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "toDo-aMinimalistToDoApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -403,11 +431,13 @@
 			baseConfigurationReference = C00643330097B1F83C4C6BBD /* Pods-toDo-aMinimalistToDoApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PYE5SX7JJS;
 				INFOPLIST_FILE = "toDo-aMinimalistToDoApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bekahlynnbaker.toDoAMinimalistToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "toDo-aMinimalistToDoApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

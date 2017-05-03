@@ -39,6 +39,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
+  - Lockbox (3.0.3)
   - SwiftKeychainWrapper (3.0.1)
   - SwiftLint (0.16.1)
 
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Lockbox
   - SwiftKeychainWrapper
   - SwiftLint
 
@@ -60,9 +62,10 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  Lockbox: 7bc46733434e89900924d53a08bd9d0e5ca12d46
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
   SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
 
-PODFILE CHECKSUM: 5011e7c574e8418378764df448e4314a23ab59d3
+PODFILE CHECKSUM: bc9d05a39b35d28906a3dffaedc92f006ca47e2f
 
 COCOAPODS: 1.1.1

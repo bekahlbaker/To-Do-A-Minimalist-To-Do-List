@@ -34,6 +34,11 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                <integer key="value" value="140"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYa-6B-eh1">
                                         <rect key="frame" x="331" y="7" width="20" height="20"/>
@@ -78,7 +83,7 @@
                                 <rect key="frame" x="16" y="138" width="343" height="529"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toDo" rowHeight="50" id="SNx-op-oz6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toDo" rowHeight="50" id="SNx-op-oz6" customClass="ToDoCell" customModule="toDo_aMinimalistToDoApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SNx-op-oz6" id="hsd-nv-EkI">
@@ -102,6 +107,9 @@
                                                         <constraint firstAttribute="height" constant="30" id="jtZ-DU-lKn"/>
                                                     </constraints>
                                                     <state key="normal" image="Check-Empty"/>
+                                                    <connections>
+                                                        <action selector="checkBtnTapped:" destination="SNx-op-oz6" eventType="touchUpInside" id="0QN-r3-YSq"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -119,6 +127,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="checkBtn" destination="knV-gI-JWx" id="c5f-lw-8F3"/>
+                                            <outlet property="roundedView" destination="iUo-7n-4Rw" id="DXb-GN-No1"/>
+                                            <outlet property="toDoLabel" destination="Shy-qx-fb4" id="bAy-Io-gdc"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

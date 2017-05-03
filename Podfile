@@ -11,5 +11,6 @@ pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'SwiftKeychainWrapper'
 pod 'SwiftLint'
+pod 'Lockbox'
 
 end
