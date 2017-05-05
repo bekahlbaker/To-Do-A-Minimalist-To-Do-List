@@ -17,5 +17,5 @@ typedef void (^onCompleteSingle)(NSDictionary * _Nullable dict, NSString * _Null
 - (void) loginUser:(NSString* _Nonnull)uuid :(nullable onComplete)completionHandler;
 - (void) getToDoItems: (nullable onComplete)completionHandler;
 - (NSString * _Nullable)anonymouslyLoginUser;
-- (void) downloadData;
+-(void) downloadDataFromHerokuAndUploadToFirebase;
 @end

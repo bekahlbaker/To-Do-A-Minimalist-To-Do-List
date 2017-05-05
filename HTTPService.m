@@ -8,6 +8,7 @@
 
 #import "HTTPService.h"
 #import "Lockbox/Lockbox.h"
+#import "Firebase.h"
 
 #define URL_BASE "https://bekah-todo-api.herokuapp.com"
 #define URL_ITEMS "/todos"
@@ -16,6 +17,7 @@
 #define URL_ID "/"
 
 @implementation HTTPService
+
 
 + (id) instance {
     static HTTPService *sharedInstance = nil;
@@ -87,7 +89,7 @@
             
             if (err == nil) {
                 completionHandler(json, nil);
-                NSLog(@"COMPLETED GETTING TODOS: %@", json);
+//                NSLog(@"COMPLETED GETTING TODOS: %@", json);
             } else {
                 completionHandler(nil, @"Data is corrupt. Try again");
             }
@@ -106,10 +108,26 @@
     }
     return ([Lockbox unarchiveObjectForKey:@"uuid"]);
 }
--(void) downloadData {
+-(void) downloadDataFromHerokuAndUploadToFirebase {
     [[HTTPService instance]getToDoItems:^(NSArray * _Nullable dataArray, NSString * _Nullable errMessage) {
         if (dataArray) {
             NSLog(@"DATA : %@", dataArray);
+//            NSString *completedValue;
+            for (NSDictionary *d in dataArray) {
+                NSString *item = [d objectForKey:@"description"];
+                BOOL completed = [[d objectForKey:@"completed"] boolValue];
+//                if (completed == 0) {
+//                    completedValue = @"false";
+//                } else if (completed == 1) {
+//                    completedValue = @"true";
+//                }
+                NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+                [dictionary setObject:item forKey:@"item"];
+                [dictionary setObject: [NSNumber numberWithBool:completed] forKey:@"completed"];
+                FIRDatabaseReference *ref;
+                ref = [[FIRDatabase database] reference];
+                [[[[ref child:@"users"] child:[Lockbox unarchiveObjectForKey:@"uuid"]] childByAutoId] setValue:dictionary];
+            }
         } else if (errMessage) {
             //Display alert
         }

@@ -36,6 +36,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
 //        addBtn.alpha = 0
         checkIfHasTransferredDataToNewDatabaseOnce()
 //     UserDefaults.standard.set(false, forKey: "hasTransferredDataToNewDatabaseOnce")
+        let httpServiceInstance: HTTPService = HTTPService()
+        httpServiceInstance.downloadDataFromHerokuAndUploadToFirebase()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,12 +57,5 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             return cell
         }
         return UITableViewCell()
-    }
-    func uploadNewToDoItem(item: String) {
-        let newItem: [String: Any] = [
-            "item": item as String,
-            "completed": false
-        ]
-        DataService.ds.REF_CURRENT_USER.childByAutoId().setValue(newItem)
     }
 }

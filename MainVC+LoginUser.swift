@@ -45,8 +45,14 @@ extension MainVC {
                 }
             })
         }
-        
-        httpServiceInstance.downloadData()
+        httpServiceInstance.downloadDataFromHerokuAndUploadToFirebase()
+    }
+    func uploadNewToDoItem(item: String) {
+        let newItem: [String: Any] = [
+            "item": item as String,
+            "completed": false
+        ]
+        DataService.ds.REF_CURRENT_USER.childByAutoId().setValue(newItem)
     }
     func anonymouslyLoginOrCreateUserInFirebase() {
         //        KeychainWrapper.standard.removeObject(forKey: KEY_UID)
