@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270BE2CE1EBCF57C00531645 /* MainVC+textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270BE2CD1EBCF57C00531645 /* MainVC+textfield.swift */; };
+		270BE2D01EC0D72300531645 /* MainVC+Tableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270BE2CF1EC0D72300531645 /* MainVC+Tableview.swift */; };
 		2714FE5C1EB7C24C009873BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714FE5B1EB7C24C009873BB /* AppDelegate.swift */; };
 		2714FE611EB7C24C009873BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2714FE5F1EB7C24C009873BB /* Main.storyboard */; };
 		2714FE631EB7C24C009873BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2714FE621EB7C24C009873BB /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270BE2CD1EBCF57C00531645 /* MainVC+textfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainVC+textfield.swift"; sourceTree = "<group>"; };
+		270BE2CF1EC0D72300531645 /* MainVC+Tableview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainVC+Tableview.swift"; sourceTree = "<group>"; };
 		2714FE581EB7C24C009873BB /* toDo-aMinimalistToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "toDo-aMinimalistToDoApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2714FE5B1EB7C24C009873BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2714FE601EB7C24C009873BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				27C577141EBA59D200745656 /* MainVC+LoginUser.swift */,
+				270BE2CD1EBCF57C00531645 /* MainVC+textfield.swift */,
+				270BE2CF1EC0D72300531645 /* MainVC+Tableview.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -282,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270BE2D01EC0D72300531645 /* MainVC+Tableview.swift in Sources */,
 				275978EF1EB8E27F00DFA92F /* ToDoCell.swift in Sources */,
 				27C577101EBA4A9F00745656 /* HTTPService.m in Sources */,
 				275978F11EB8E40200DFA92F /* ToDoItem.swift in Sources */,
@@ -289,6 +296,7 @@
 				27C577151EBA59D200745656 /* MainVC+LoginUser.swift in Sources */,
 				2714FE5C1EB7C24C009873BB /* AppDelegate.swift in Sources */,
 				2714FE721EB8D7EE009873BB /* RoundedView.swift in Sources */,
+				270BE2CE1EBCF57C00531645 /* MainVC+textfield.swift in Sources */,
 				275978ED1EB8E26500DFA92F /* TextFieldMaxLength.swift in Sources */,
 				275978F31EB8E8C700DFA92F /* DataService.swift in Sources */,
 			);

@@ -47,6 +47,7 @@
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (data != nil) {
+            NSLog(@"DATA: %@", data);
             NSURLResponse* responseFrom = response;
             NSDictionary* headers = [(NSHTTPURLResponse *)responseFrom allHeaderFields];
             NSString *authToken = [headers objectForKey:@"Auth"];
@@ -108,7 +109,7 @@
     }
     return ([Lockbox unarchiveObjectForKey:@"uuid"]);
 }
--(void) downloadDataFromHerokuAndUploadToFirebase {
+-(BOOL) downloadDataFromHerokuAndUploadToFirebase {
     [[HTTPService instance]getToDoItems:^(NSArray * _Nullable dataArray, NSString * _Nullable errMessage) {
         if (dataArray) {
             NSLog(@"DATA : %@", dataArray);
@@ -132,5 +133,6 @@
             //Display alert
         }
     }];
+    return YES;
 }
 @end

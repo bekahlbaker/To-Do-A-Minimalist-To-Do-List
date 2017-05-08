@@ -43,9 +43,18 @@ extension MainVC {
                     let userData = ["provider": user?.providerID]
                     DataService.ds.completeSignIn(uid, userData: (userData as? [String: String])!)
                 }
+                //download data from FB and reload table
+                if httpServiceInstance.downloadDataFromHerokuAndUploadToFirebase() {
+                    self.downloadData(completionHandler: { (success) in
+                        if success {
+                            self.tableView.reloadData()
+                        } else {
+                            print("ERROR")
+                        }
+                    })
+                }
             })
         }
-        httpServiceInstance.downloadDataFromHerokuAndUploadToFirebase()
     }
     func uploadNewToDoItem(item: String) {
         let newItem: [String: Any] = [
@@ -53,6 +62,11 @@ extension MainVC {
             "completed": false
         ]
         DataService.ds.REF_CURRENT_USER.childByAutoId().setValue(newItem)
+        self.downloadData { (success) in
+            if success {
+                self.tableView.reloadData()
+            }
+        }
     }
     func anonymouslyLoginOrCreateUserInFirebase() {
         //        KeychainWrapper.standard.removeObject(forKey: KEY_UID)
@@ -84,6 +98,7 @@ extension MainVC {
         }
     }
     func downloadData(completionHandler:@escaping (Bool) -> Void) {
+        self.toDoList = []
         DispatchQueue.global().asyncAfter(deadline: .now() + 2.0) {
             let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
             connectedRef.observe(.value, with: { snapshot in
@@ -96,7 +111,7 @@ extension MainVC {
                                 if let dict = snap.value as? [String: AnyObject] {
                                     let itemID = snap.key
                                     let item = ToDoItem(itemID: itemID, postData: dict)
-                                    self.toDoList.append(item)
+                                    self.toDoList.insert(item, at: 0)
                                     if self.toDoList.count > 0 {
                                         completionHandler(true)
                                     }
