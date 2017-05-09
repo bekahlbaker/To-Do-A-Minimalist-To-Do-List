@@ -90,7 +90,6 @@
             
             if (err == nil) {
                 completionHandler(json, nil);
-//                NSLog(@"COMPLETED GETTING TODOS: %@", json);
             } else {
                 completionHandler(nil, @"Data is corrupt. Try again");
             }
@@ -113,15 +112,9 @@
     [[HTTPService instance]getToDoItems:^(NSArray * _Nullable dataArray, NSString * _Nullable errMessage) {
         if (dataArray) {
             NSLog(@"DATA : %@", dataArray);
-//            NSString *completedValue;
             for (NSDictionary *d in dataArray) {
                 NSString *item = [d objectForKey:@"description"];
                 BOOL completed = [[d objectForKey:@"completed"] boolValue];
-//                if (completed == 0) {
-//                    completedValue = @"false";
-//                } else if (completed == 1) {
-//                    completedValue = @"true";
-//                }
                 NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
                 [dictionary setObject:item forKey:@"item"];
                 [dictionary setObject: [NSNumber numberWithBool:completed] forKey:@"completed"];
