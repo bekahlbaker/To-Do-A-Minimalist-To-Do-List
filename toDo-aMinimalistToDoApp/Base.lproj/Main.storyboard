@@ -80,22 +80,22 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u0p-Cb-2CB">
-                                <rect key="frame" x="16" y="138" width="343" height="529"/>
+                                <rect key="frame" x="0.0" y="138" width="375" height="529"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toDo" rowHeight="50" id="SNx-op-oz6" customClass="ToDoCell" customModule="toDo_aMinimalistToDoApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SNx-op-oz6" id="hsd-nv-EkI">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUo-7n-4Rw" customClass="RoundedView" customModule="toDo_aMinimalistToDoApp" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="4" width="327" height="42"/>
+                                                    <rect key="frame" x="8" y="4" width="359" height="42"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shy-qx-fb4">
-                                                    <rect key="frame" x="50" y="12" width="281" height="26"/>
+                                                    <rect key="frame" x="50" y="12" width="313" height="26"/>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -146,16 +146,16 @@
                         <color key="backgroundColor" red="0.97647058823529409" green="0.8901960784313725" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="d8y-Hq-S95" firstAttribute="top" secondItem="R8U-Dg-bfM" secondAttribute="bottom" id="2bp-cy-AtL"/>
+                            <constraint firstItem="u0p-Cb-2CB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8br-Yw-C8S"/>
                             <constraint firstItem="ZHU-ZC-4CS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H0O-J7-zsb"/>
                             <constraint firstItem="R8U-Dg-bfM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IRR-0o-vNO"/>
                             <constraint firstAttribute="trailing" secondItem="d8y-Hq-S95" secondAttribute="trailing" id="KCQ-0o-bVP"/>
                             <constraint firstItem="d8y-Hq-S95" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LHS-Fa-Omf"/>
+                            <constraint firstAttribute="trailing" secondItem="u0p-Cb-2CB" secondAttribute="trailing" id="N1N-VA-Yge"/>
                             <constraint firstAttribute="trailing" secondItem="f8g-Ww-a7E" secondAttribute="trailing" constant="8" id="PzQ-yW-jy1"/>
                             <constraint firstItem="f8g-Ww-a7E" firstAttribute="top" secondItem="R8U-Dg-bfM" secondAttribute="bottom" constant="12" id="WU8-5A-Hk8"/>
                             <constraint firstItem="u0p-Cb-2CB" firstAttribute="top" secondItem="f8g-Ww-a7E" secondAttribute="bottom" constant="16" id="dsa-Vb-IC2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="u0p-Cb-2CB" secondAttribute="bottom" id="eUi-s8-B7U"/>
-                            <constraint firstItem="u0p-Cb-2CB" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="hMS-vv-I5v"/>
-                            <constraint firstItem="u0p-Cb-2CB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hcQ-gW-Eyz"/>
                             <constraint firstItem="ZHU-ZC-4CS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="krN-sV-JfK"/>
                             <constraint firstAttribute="trailing" secondItem="R8U-Dg-bfM" secondAttribute="trailing" id="l7I-ni-jxw"/>
                             <constraint firstItem="f8g-Ww-a7E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="lTn-E9-c3V"/>

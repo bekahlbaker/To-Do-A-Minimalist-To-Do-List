@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import StoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        let currentCount = UserDefaults.standard.integer(forKey: "launchCount")
+        UserDefaults.standard.set(currentCount+1, forKey:"launchCount")
+        UserDefaults.standard.synchronize()
+        print("App has been launched: \(currentCount)")
+        if #available(iOS 10.3, *) {
+            if currentCount == 10 {
+                SKStoreReviewController.requestReview()
+            } else if currentCount == 175 {
+                SKStoreReviewController.requestReview()
+            } else if currentCount == 350 {
+                SKStoreReviewController.requestReview()
+            }
+            
+        } else {
+            // Fallback on earlier versions
+        }
         return true
     }
 

@@ -425,6 +425,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PYE5SX7JJS;
 				INFOPLIST_FILE = "toDo-aMinimalistToDoApp/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bekahlynnbaker.toDoAMinimalistToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -442,6 +443,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PYE5SX7JJS;
 				INFOPLIST_FILE = "toDo-aMinimalistToDoApp/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bekahlynnbaker.toDoAMinimalistToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
