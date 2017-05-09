@@ -192,7 +192,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Rebekah Baker";
 				TargetAttributes = {
 					2714FE571EB7C24C009873BB = {
@@ -421,11 +421,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 80239C45B27F07AEEC623026 /* Pods-toDo-aMinimalistToDoApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PYE5SX7JJS;
 				INFOPLIST_FILE = "toDo-aMinimalistToDoApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bekahlynnbaker.toDoAMinimalistToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -439,11 +440,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C00643330097B1F83C4C6BBD /* Pods-toDo-aMinimalistToDoApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PYE5SX7JJS;
 				INFOPLIST_FILE = "toDo-aMinimalistToDoApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bekahlynnbaker.toDoAMinimalistToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
