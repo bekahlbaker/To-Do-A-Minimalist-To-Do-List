@@ -11,51 +11,51 @@ import Firebase
 import SwiftKeychainWrapper
 
 extension MainVC {
-    func checkIfHasTransferredDataToNewDatabaseOnce() {
-        if UserDefaults.standard.bool(forKey: "hasTransferredDataToNewDatabaseOnce") {
-            print("NOT first launch")
-            //Login to Firebase and download Data
-            anonymouslyLoginOrCreateUserInFirebase()
-        } else {
-            print("FIRST launch")
-            UserDefaults.standard.set(true, forKey: "hasTransferredDataToNewDatabaseOnce")
-            UserDefaults.standard.synchronize()
-            //1. Login user to Heroku and download Data (save all)
-            //2. Upload new user to FB with old UID and upload Data
-            //3. login user to FB and download Data
-            transferDataFromHerokuToFirebase()
-        }
-    }
-    func transferDataFromHerokuToFirebase() {
-        let httpServiceInstance: HTTPService = HTTPService()
-        //Login user to Heroku
-        if let UID = httpServiceInstance.anonymouslyLoginUser() {
-            print("UID FROM OLD DATABASE: \(UID)")
-            //Create new user in FB with UID from Heroku
-            FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
-                print("AUTH IS RUNNING")
-                if error != nil {
-                    print("There was an error logging in anonymously")
-                    print(error as Any)
-                } else {
-                    print("We are now logged in")
-                    let uid = UID
-                    let userData = ["provider": user?.providerID]
-                    DataService.ds.completeSignIn(uid, userData: (userData as? [String: String])!)
-                }
-                //download data from FB and reload table
-                if httpServiceInstance.downloadDataFromHerokuAndUploadToFirebase() {
-                    self.downloadData(completionHandler: { (success) in
-                        if success {
-                            self.tableView.reloadData()
-                        } else {
-                            print("ERROR")
-                        }
-                    })
-                }
-            })
-        }
-    }
+//    func checkIfHasTransferredDataToNewDatabaseOnce() {
+//        if UserDefaults.standard.bool(forKey: "hasTransferredDataToNewDatabaseOnce") {
+//            print("NOT first launch")
+//            //Login to Firebase and download Data
+//            anonymouslyLoginOrCreateUserInFirebase()
+//        } else {
+//            print("FIRST launch")
+//            UserDefaults.standard.set(true, forKey: "hasTransferredDataToNewDatabaseOnce")
+//            UserDefaults.standard.synchronize()
+//            //1. Login user to Heroku and download Data (save all)
+//            //2. Upload new user to FB with old UID and upload Data
+//            //3. login user to FB and download Data
+//            transferDataFromHerokuToFirebase()
+//        }
+//    }
+//    func transferDataFromHerokuToFirebase() {
+//        let httpServiceInstance: HTTPService = HTTPService()
+//        //Login user to Heroku
+//        if let UID = httpServiceInstance.anonymouslyLoginUser() {
+//            print("UID FROM OLD DATABASE: \(UID)")
+//            //Create new user in FB with UID from Heroku
+//            FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
+//                print("AUTH IS RUNNING")
+//                if error != nil {
+//                    print("There was an error logging in anonymously")
+//                    print(error as Any)
+//                } else {
+//                    print("We are now logged in")
+//                    let uid = UID
+//                    let userData = ["provider": user?.providerID]
+//                    DataService.ds.completeSignIn(uid, userData: (userData as? [String: String])!)
+//                }
+//                //download data from FB and reload table
+//                if httpServiceInstance.downloadDataFromHerokuAndUploadToFirebase() {
+//                    self.downloadData(completionHandler: { (success) in
+//                        if success {
+//                            self.tableView.reloadData()
+//                        } else {
+//                            print("ERROR")
+//                        }
+//                    })
+//                }
+//            })
+//        }
+//    }
     func uploadNewToDoItem(item: String) {
         let newItem: [String: Any] = [
             "item": item as String,
@@ -93,17 +93,26 @@ extension MainVC {
                     let uid = user!.uid
                     let userData = ["provider": user?.providerID]
                     DataService.ds.completeSignIn(uid, userData: (userData as? [String: String])!)
+                    self.downloadData { (successDownloadingData) in
+                        if successDownloadingData {
+                            self.tableView.reloadData()
+                            print("Reload Table")
+                        } else {
+                            print("Unable to download data, try again")
+                        }
+                    }
                 }
             })
         }
     }
     func downloadData(completionHandler:@escaping (Bool) -> Void) {
         self.toDoList = []
-        DispatchQueue.global().asyncAfter(deadline: .now() + 2.0) {
-            let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
-            connectedRef.observe(.value, with: { snapshot in
-                if let connected = snapshot.value as? Bool, connected {
-                    print("Connected")
+        DispatchQueue.global().async {
+//            let connectedRef = FIRDatabase.database().reference(withPath: ".info/connected")
+//            connectedRef.observeSingleEvent(of: .value, with: { snapshot in
+//                if let connected = snapshot.value as? Bool, connected {
+//                    print("Connected")
+//                    self.activitySpinner.stopAnimating()
                     DataService.ds.REF_CURRENT_USER.observeSingleEvent(of: .value, with: { (snapshot) in
                         if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                             for snap in snapshot {
@@ -119,11 +128,11 @@ extension MainVC {
                             }
                         }
                     })
-                } else {
-                    print("Not connected")
-                    //                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "noInternetConnectionError"), object: nil)
-                }
-            })
+//                } else {
+//                    print("Not connected")
+//                    
+//                }
+//            })
         }
     }
 }

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,10 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZHU-ZC-4CS">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                                <color key="color" red="0.69019607843137254" green="0.58039215686274503" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8g-Ww-a7E" customClass="RoundedView" customModule="toDo_aMinimalistToDoApp" customModuleProvider="target">
                                 <rect key="frame" x="8" y="87" width="359" height="35"/>
                                 <subviews>
@@ -142,12 +138,29 @@
                                     <constraint firstAttribute="height" constant="5" id="4NA-JL-imY"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZHU-ZC-4CS">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.69019607843137254" green="0.58039215686274503" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efc-Uh-hsR">
+                                <rect key="frame" x="157" y="222" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="F7H-lP-2YG"/>
+                                    <constraint firstAttribute="height" constant="60" id="M5j-Bg-1ua"/>
+                                </constraints>
+                                <state key="normal" image="relaod"/>
+                                <connections>
+                                    <action selector="reloadBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VnZ-t1-Znb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.8901960784313725" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="d8y-Hq-S95" firstAttribute="top" secondItem="R8U-Dg-bfM" secondAttribute="bottom" id="2bp-cy-AtL"/>
                             <constraint firstItem="u0p-Cb-2CB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8br-Yw-C8S"/>
+                            <constraint firstItem="efc-Uh-hsR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FN9-9m-kFv"/>
                             <constraint firstItem="ZHU-ZC-4CS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H0O-J7-zsb"/>
+                            <constraint firstItem="efc-Uh-hsR" firstAttribute="top" secondItem="f8g-Ww-a7E" secondAttribute="bottom" constant="100" id="HOt-ON-OdK"/>
                             <constraint firstItem="R8U-Dg-bfM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IRR-0o-vNO"/>
                             <constraint firstAttribute="trailing" secondItem="d8y-Hq-S95" secondAttribute="trailing" id="KCQ-0o-bVP"/>
                             <constraint firstItem="d8y-Hq-S95" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LHS-Fa-Omf"/>
@@ -165,6 +178,7 @@
                     <connections>
                         <outlet property="activitySpinner" destination="ZHU-ZC-4CS" id="R2n-L8-9e2"/>
                         <outlet property="addBtn" destination="mYa-6B-eh1" id="te2-aj-WVf"/>
+                        <outlet property="reloadBtn" destination="efc-Uh-hsR" id="UxM-2t-1RQ"/>
                         <outlet property="tableView" destination="u0p-Cb-2CB" id="0BI-A6-8R3"/>
                         <outlet property="textField" destination="YCb-hr-SfH" id="2fF-jw-8Tl"/>
                     </connections>
@@ -177,5 +191,6 @@
     <resources>
         <image name="Add" width="91" height="92"/>
         <image name="Check-Empty" width="100" height="100"/>
+        <image name="relaod" width="88" height="96"/>
     </resources>
 </document>

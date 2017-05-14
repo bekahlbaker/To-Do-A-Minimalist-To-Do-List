@@ -12,6 +12,9 @@ import SwiftKeychainWrapper
 
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
+    @IBOutlet weak var reloadBtn: UIButton!
+    @IBAction func reloadBtnTapped(_ sender: Any) {
+    }
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addBtn: UIButton!
@@ -35,7 +38,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         textField.delegate = self
         textField.returnKeyType = UIReturnKeyType.done
         addBtn.alpha = 0
-        checkIfHasTransferredDataToNewDatabaseOnce()
+        reloadBtn.alpha = 0
+        activitySpinner.alpha = 0
+        anonymouslyLoginOrCreateUserInFirebase()
+//        checkIfHasTransferredDataToNewDatabaseOnce()
 //     UserDefaults.standard.set(false, forKey: "hasTransferredDataToNewDatabaseOnce")
     }
 }
