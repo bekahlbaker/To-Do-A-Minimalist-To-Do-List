@@ -33,16 +33,12 @@ extension MainVC {
         return 50.0
     }
     func checkBtnTapped(_ sender: UIButton) {
-        print(sender.tag)
         let row = sender.tag
         let indexPath = IndexPath(row: row, section: 0)
         let cell: ToDoCell = (self.tableView.cellForRow(at: indexPath) as? ToDoCell)!
-        print(cell.itemID)
         if cell.completed == true {
-            print("Item is completed")
             editItem(isDone: false, itemID: cell.itemID, item: cell.toDoLabel.text!, sender: row)
         } else if cell.completed == false {
-           print("Item is not completed")
             editItem(isDone: true, itemID: cell.itemID, item: cell.toDoLabel.text!, sender: row)
         }
         
@@ -67,22 +63,26 @@ extension MainVC {
             "completed": isDone
         ]
         DataService.ds.REF_CURRENT_USER.child(itemID).setValue(updateItem)
-            self.downloadSingleItem(itemId: itemID, sender: sender)
+        self.downloadSingleItem(itemId: itemID, sender: sender)
     }
     func deleteItem(itemId: String, sender: Int) {
-        DispatchQueue.global().async {
-            DataService.ds.REF_CURRENT_USER.child(itemId).removeValue()
-            self.toDoList.remove(at: sender)
-            DispatchQueue.main.async {
+        self.toDoList.remove(at: sender)
+        DataService.ds.REF_CURRENT_USER.child(itemId).removeValue()
+        self.tableView.reloadData()
+        downloadData { (successDownloadingData) in
+            if successDownloadingData {
                 self.tableView.reloadData()
+                print("Reload Table")
+            } else {
+                print("Unable to download data, try again")
             }
         }
-    }
+}
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let item: ToDoItem = self.toDoList[indexPath.row]
+        //        let item: ToDoItem = self.toDoList[indexPath.row]
         let cell: ToDoCell = self.tableView.cellForRow(at: indexPath) as! ToDoCell
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             let alert = UIAlertController(title: "Are you sure you want to delete this item?", message: "You will not be able to get this back.", preferredStyle: UIAlertControllerStyle.alert)
@@ -128,5 +128,26 @@ extension MainVC {
         }
         share.backgroundColor = UIColor(colorLiteralRed: 0.69, green: 0.58, blue: 0.43, alpha: 1.0 )
         return [delete, edit, share]
+    }
+    func getItemsToShare(completionHandler:@escaping (Bool) -> Void) {
+        if let rows = tableView.indexPathsForSelectedRows.map({$0.map{$0.row}}) {
+            self.stringToShare = ""
+            for row in rows {
+                let toDoItem: ToDoItem = self.toDoList[row]
+                let item = toDoItem.toDoListItem
+                stringToShare += item + "\n"
+            }
+            completionHandler(true)
+        }
+    }
+    func getItemsToDelete(completionHandler:@escaping (Bool) -> Void) {
+        if let indexPaths = tableView.indexPathsForSelectedRows {
+            for indexPath in indexPaths {
+                let cell: ToDoCell = tableView.cellForRow(at: indexPath) as! ToDoCell
+                self.toDoList.remove(at: indexPath.row)
+                DataService.ds.REF_CURRENT_USER.child(cell.itemID).removeValue()
+            }
+            completionHandler(true)
+        }
     }
 }

@@ -23,7 +23,7 @@ extension MainVC {
         self.addBtn.alpha = 1
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if self.textField.text != "" {
+        if self.textField.text != "" && self.textField.text != "Add a to-do item..." {
             if let newItemString = self.textField.text {
                 uploadNewToDoItem(item: newItemString)
             }

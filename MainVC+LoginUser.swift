@@ -73,18 +73,16 @@ extension MainVC {
         //        try! FIRAuth.auth()?.signOut()
         if KeychainWrapper.standard.string(forKey: KEY_UID) != nil {
             let currentUser = KeychainWrapper.standard.string(forKey: KEY_UID)! as String
-            print("CURRENT USER \(currentUser)")
             downloadData { (successDownloadingData) in
                 if successDownloadingData {
                     self.tableView.reloadData()
-                    print("Reload Table")
+                    print("Reload Table for login")
                 } else {
                     print("Unable to download data, try again")
                 }
             }
         } else {
             FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
-                print("AUTH IS RUNNING")
                 if error != nil {
                     print("There was an error logging in anonymously")
                     print(error as Any)
@@ -96,7 +94,7 @@ extension MainVC {
                     self.downloadData { (successDownloadingData) in
                         if successDownloadingData {
                             self.tableView.reloadData()
-                            print("Reload Table")
+                            print("Reload Table for Sign up new user")
                         } else {
                             print("Unable to download data, try again")
                         }
@@ -116,7 +114,6 @@ extension MainVC {
                     DataService.ds.REF_CURRENT_USER.observeSingleEvent(of: .value, with: { (snapshot) in
                         if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                             for snap in snapshot {
-                                print(snap)
                                 if let dict = snap.value as? [String: AnyObject] {
                                     let itemID = snap.key
                                     let item = ToDoItem(itemID: itemID, postData: dict)
