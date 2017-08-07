@@ -28,6 +28,19 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         }
         self.textFieldIsNotSelected()
     }
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBAction func cancelBtnTapped(_ sender: Any) {
+        self.tableView.setEditing(false, animated: true)
+        if self.isSelectingToShare {
+            self.isSelectingToShare = false
+        }
+        if self.isSelectingToDelete {
+            self.isSelectingToDelete = false
+        }
+        self.shareBtn.setImage(UIImage(named: "more-dots"), for: .normal)
+        self.shareBtn.setTitle(nil, for: .normal)
+        self.cancelBtn.alpha = 0
+    }
     var isSelectingToShare = false
     var isSelectingToDelete = false
     var stringToShare = ""
@@ -37,17 +50,20 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             let alert = UIAlertController(title:nil, message: nil, preferredStyle: .actionSheet)
             let share = UIAlertAction(title: "Share", style: .default, handler: { (_) -> Void in
                 //share action
+                self.cancelBtn.alpha = 1
                 self.isSelectingToShare = true
                 self.tableView.setEditing(true, animated: true)
-                self.shareBtn.setImage(UIImage(named: "share2"), for: .normal)
+                self.shareBtn.setTitle("Share", for: .normal)
+                self.shareBtn.setImage(nil, for: .normal)
             })
             alert.addAction(share)
             let delete = UIAlertAction(title: "Delete", style: .destructive, handler: { (_) -> Void in
                 //delete action
+                self.cancelBtn.alpha = 1
                 self.isSelectingToDelete = true
                 self.tableView.setEditing(true, animated: true)
-                self.shareBtn.setImage(nil, for: .normal)
                 self.shareBtn.setTitle("Delete", for: .normal)
+                self.shareBtn.setImage(nil, for: .normal)
             })
             alert.addAction(delete)
             let  cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) -> Void in
@@ -61,7 +77,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                     self.present(controller, animated: true, completion: nil)
                     self.tableView.setEditing(false, animated: true)
                     self.isSelectingToShare = false
-                    self.shareBtn.setImage(UIImage(named: "settings"), for: .normal)
+                    self.shareBtn.setImage(UIImage(named: "more-dots"), for: .normal)
+                    self.cancelBtn.alpha = 0
                 } else {
                     print("Unable to get items to share")
                 }
@@ -74,8 +91,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                             self.tableView.reloadData()
                             self.tableView.setEditing(false, animated: true)
                             self.isSelectingToDelete = false
-                            self.shareBtn.setImage(UIImage(named: "settings"), for: .normal)
-                            print("Reload Table after deleting")
+                            self.shareBtn.setImage(UIImage(named: "more-dots"), for: .normal)
+                            self.cancelBtn.alpha = 0
                         } else {
                             print("Unable to delete data, try again")
                         }
@@ -90,7 +107,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     var toDoList = [ToDoItem]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 45
@@ -100,8 +116,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         addBtn.alpha = 0
         reloadBtn.alpha = 0
         activitySpinner.alpha = 0
+        cancelBtn.alpha = 0
         anonymouslyLoginOrCreateUserInFirebase()
-        //        checkIfHasTransferredDataToNewDatabaseOnce()
-        //     UserDefaults.standard.set(false, forKey: "hasTransferredDataToNewDatabaseOnce")
     }
 }

@@ -22,6 +22,9 @@ extension MainVC {
             cell.configureCell(toDoItem: toDoItem)
             cell.checkBtn.tag = indexPath.row
             cell.checkBtn.addTarget(self, action: #selector(checkBtnTapped), for: .touchUpInside)
+            let backgroundView = UIView()
+            backgroundView.backgroundColor = UIColor(red:0.75, green:0.75, blue:0.75, alpha:1.0)
+            cell.selectedBackgroundView = backgroundView
             return cell
         }
         return UITableViewCell()
