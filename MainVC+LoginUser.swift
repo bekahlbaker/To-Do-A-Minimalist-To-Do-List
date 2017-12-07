@@ -72,7 +72,7 @@ extension MainVC {
         //        KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         //        try! FIRAuth.auth()?.signOut()
         if KeychainWrapper.standard.string(forKey: KEY_UID) != nil {
-            let currentUser = KeychainWrapper.standard.string(forKey: KEY_UID)! as String
+//            let currentUser = KeychainWrapper.standard.string(forKey: KEY_UID)! as String
             downloadData { (successDownloadingData) in
                 if successDownloadingData {
                     self.tableView.reloadData()
@@ -111,6 +111,7 @@ extension MainVC {
 //                if let connected = snapshot.value as? Bool, connected {
 //                    print("Connected")
 //                    self.activitySpinner.stopAnimating()
+            DataService.ds.REF_CURRENT_USER.keepSynced(true)
                     DataService.ds.REF_CURRENT_USER.observeSingleEvent(of: .value, with: { (snapshot) in
                         if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                             for snap in snapshot {

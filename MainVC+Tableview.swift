@@ -47,40 +47,34 @@ extension MainVC {
         
     }
     func downloadSingleItem(itemId: String, sender: Int) {
-        DispatchQueue.global().async {
-            DataService.ds.REF_CURRENT_USER.child(itemId).observeSingleEvent(of: .value, with: { (snapshot) in
-                if let dict = snapshot.value as? [String: AnyObject] {
-                    let item = ToDoItem(itemID: itemId, postData: dict)
-                    DispatchQueue.main.async {
-                        let indexPath = IndexPath(row: sender, section: 0)
-                        let cell: ToDoCell = (self.tableView.cellForRow(at: indexPath) as? ToDoCell)!
-                        cell.configureCell(toDoItem: item)
-                    }
+        DataService.ds.REF_CURRENT_USER.keepSynced(true)
+        DataService.ds.REF_CURRENT_USER.child(itemId).observe(.value, with: { (snapshot) in
+            if let dict = snapshot.value as? [String: AnyObject] {
+                let item = ToDoItem(itemID: itemId, postData: dict)
+                DispatchQueue.main.async {
+                    let indexPath = IndexPath(row: sender, section: 0)
+                    let cell: ToDoCell = (self.tableView.cellForRow(at: indexPath) as? ToDoCell)!
+                    cell.configureCell(toDoItem: item)
                 }
-            })
-        }
+            }
+        })
     }
     func editItem(isDone: Bool, itemID: String, item: String, sender: Int) {
-        let updateItem: [String: Any] = [
-            "item": item as String,
-            "completed": isDone
-        ]
-        DataService.ds.REF_CURRENT_USER.child(itemID).setValue(updateItem)
-        self.downloadSingleItem(itemId: itemID, sender: sender)
+        DispatchQueue.global().async {
+            let updateItem: [String: Any] = [
+                "item": item as String,
+                "completed": isDone
+            ]
+            DataService.ds.REF_CURRENT_USER.child(itemID).setValue(updateItem)
+            DispatchQueue.global().sync {
+                self.downloadSingleItem(itemId: itemID, sender: sender)
+            }
+        }
     }
     func deleteItem(itemId: String, sender: Int) {
         self.toDoList.remove(at: sender)
         DataService.ds.REF_CURRENT_USER.child(itemId).removeValue()
-        self.tableView.reloadData()
-        downloadData { (successDownloadingData) in
-            if successDownloadingData {
-                self.tableView.reloadData()
-                print("Reload Table")
-            } else {
-                print("Unable to download data, try again")
-            }
-        }
-}
+    }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -93,6 +87,7 @@ extension MainVC {
                 print("DELETE ITEM")
                 //DELETE ITEM AT INDEX PATH
                 self.deleteItem(itemId: cell.itemID, sender: indexPath.row)
+                tableView.reloadData()
             })
             let no = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alert.addAction(yes)
@@ -105,11 +100,11 @@ extension MainVC {
             let alert = UIAlertController(title: "Edit your to-do description.", message: nil, preferredStyle: UIAlertControllerStyle.alert)
             let edit = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 let editingTextfield = alert.textFields![0] as UITextField
-                //EDIT ITEM AT INDEX PATH
                 if let stringToUpdate = editingTextfield.text {
                     self.tableView.isEditing = false
                     self.editItem(isDone: cell.completed, itemID: cell.itemID, item: stringToUpdate, sender: indexPath.row)
                 }
+                
             })
             let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alert.addAction(edit)

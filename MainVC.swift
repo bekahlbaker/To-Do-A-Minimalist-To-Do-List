@@ -69,15 +69,22 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             let  cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) -> Void in
             }
             alert.addAction(cancel)
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = (sender as AnyObject).bounds
+            
             self.present(alert, animated: true, completion: nil)
         } else if isSelectingToShare {
             self.getItemsToShare { (successGettingItemsToShare) in
                 if successGettingItemsToShare {
                     let controller = UIActivityViewController(activityItems: [self.stringToShare], applicationActivities: nil)
+                    controller.popoverPresentationController?.sourceView = self.view
+                    controller.popoverPresentationController?.sourceRect = (sender as AnyObject).bounds
+                    
                     self.present(controller, animated: true, completion: nil)
                     self.tableView.setEditing(false, animated: true)
                     self.isSelectingToShare = false
                     self.shareBtn.setImage(UIImage(named: "more-dots"), for: .normal)
+                    self.shareBtn.setTitle(nil, for: .normal)
                     self.cancelBtn.alpha = 0
                 } else {
                     print("Unable to get items to share")
@@ -92,6 +99,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                             self.tableView.setEditing(false, animated: true)
                             self.isSelectingToDelete = false
                             self.shareBtn.setImage(UIImage(named: "more-dots"), for: .normal)
+                            self.shareBtn.setTitle(nil, for: .normal)
                             self.cancelBtn.alpha = 0
                         } else {
                             print("Unable to delete data, try again")
@@ -101,6 +109,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                 let no = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                 alert.addAction(yes)
                 alert.addAction(no)
+                alert.popoverPresentationController?.sourceView = self.view
+                alert.popoverPresentationController?.sourceRect = (sender as AnyObject).bounds
+            
                 self.present(alert, animated: true, completion: nil)
             }
     }
