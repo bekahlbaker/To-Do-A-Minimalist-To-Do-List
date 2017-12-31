@@ -12,5 +12,6 @@ pod 'Firebase/Database'
 pod 'SwiftKeychainWrapper'
 pod 'SwiftLint'
 pod 'Lockbox'
+pod 'RealmSwift'
 
 end

@@ -22,6 +22,11 @@
 		275978F51EB8E99E00DFA92F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 275978F41EB8E99E00DFA92F /* GoogleService-Info.plist */; };
 		27C577101EBA4A9F00745656 /* HTTPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C5770F1EBA4A9F00745656 /* HTTPService.m */; };
 		27C577151EBA59D200745656 /* MainVC+LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C577141EBA59D200745656 /* MainVC+LoginUser.swift */; };
+		27F8C8A91FD9A54B00903C22 /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F8C8A81FD9A54B00903C22 /* ToDoModel.swift */; };
+		27F8C8AB1FDAF61700903C22 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F8C8AA1FDAF61700903C22 /* ListModel.swift */; };
+		27F8C8AD1FDB070800903C22 /* MainVC+MultipleLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F8C8AC1FDB070800903C22 /* MainVC+MultipleLists.swift */; };
+		27F8C8AF1FDB074000903C22 /* MainVC+ShareDeleteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F8C8AE1FDB074000903C22 /* MainVC+ShareDeleteList.swift */; };
+		27F8C8B11FDB22D200903C22 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F8C8B01FDB22D200903C22 /* RoundedButton.swift */; };
 		3E13C2DB7DB90DD405905164 /* Pods_toDo_aMinimalistToDoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F962CAADE4F06DE11A9BDE74 /* Pods_toDo_aMinimalistToDoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +50,11 @@
 		27C577111EBA4AAC00745656 /* HTTPService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPService.h; sourceTree = "<group>"; };
 		27C577121EBA4AE100745656 /* toDo-aMinimalistToDoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "toDo-aMinimalistToDoApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		27C577141EBA59D200745656 /* MainVC+LoginUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainVC+LoginUser.swift"; sourceTree = "<group>"; };
+		27F8C8A81FD9A54B00903C22 /* ToDoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
+		27F8C8AA1FDAF61700903C22 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
+		27F8C8AC1FDB070800903C22 /* MainVC+MultipleLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC+MultipleLists.swift"; sourceTree = "<group>"; };
+		27F8C8AE1FDB074000903C22 /* MainVC+ShareDeleteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC+ShareDeleteList.swift"; sourceTree = "<group>"; };
+		27F8C8B01FDB22D200903C22 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		80239C45B27F07AEEC623026 /* Pods-toDo-aMinimalistToDoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toDo-aMinimalistToDoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-toDo-aMinimalistToDoApp/Pods-toDo-aMinimalistToDoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C00643330097B1F83C4C6BBD /* Pods-toDo-aMinimalistToDoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toDo-aMinimalistToDoApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-toDo-aMinimalistToDoApp/Pods-toDo-aMinimalistToDoApp.release.xcconfig"; sourceTree = "<group>"; };
 		F962CAADE4F06DE11A9BDE74 /* Pods_toDo_aMinimalistToDoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_toDo_aMinimalistToDoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +122,7 @@
 				2714FE711EB8D7EE009873BB /* RoundedView.swift */,
 				275978EC1EB8E26500DFA92F /* TextFieldMaxLength.swift */,
 				275978EE1EB8E27F00DFA92F /* ToDoCell.swift */,
+				27F8C8B01FDB22D200903C22 /* RoundedButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -120,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				275978F01EB8E40200DFA92F /* ToDoItem.swift */,
+				27F8C8A81FD9A54B00903C22 /* ToDoModel.swift */,
+				27F8C8AA1FDAF61700903C22 /* ListModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -141,6 +154,8 @@
 				27C577141EBA59D200745656 /* MainVC+LoginUser.swift */,
 				270BE2CD1EBCF57C00531645 /* MainVC+textfield.swift */,
 				270BE2CF1EC0D72300531645 /* MainVC+Tableview.swift */,
+				27F8C8AC1FDB070800903C22 /* MainVC+MultipleLists.swift */,
+				27F8C8AE1FDB074000903C22 /* MainVC+ShareDeleteList.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -192,13 +207,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Rebekah Baker";
 				TargetAttributes = {
 					2714FE571EB7C24C009873BB = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = PYE5SX7JJS;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -242,9 +257,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-toDo-aMinimalistToDoApp/Pods-toDo-aMinimalistToDoApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Lockbox/Lockbox.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lockbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -272,13 +300,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-toDo-aMinimalistToDoApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -293,11 +324,16 @@
 				27C577101EBA4A9F00745656 /* HTTPService.m in Sources */,
 				275978F11EB8E40200DFA92F /* ToDoItem.swift in Sources */,
 				2714FE741EB8D867009873BB /* MainVC.swift in Sources */,
+				27F8C8A91FD9A54B00903C22 /* ToDoModel.swift in Sources */,
 				27C577151EBA59D200745656 /* MainVC+LoginUser.swift in Sources */,
 				2714FE5C1EB7C24C009873BB /* AppDelegate.swift in Sources */,
 				2714FE721EB8D7EE009873BB /* RoundedView.swift in Sources */,
 				270BE2CE1EBCF57C00531645 /* MainVC+textfield.swift in Sources */,
+				27F8C8AB1FDAF61700903C22 /* ListModel.swift in Sources */,
+				27F8C8B11FDB22D200903C22 /* RoundedButton.swift in Sources */,
+				27F8C8AD1FDB070800903C22 /* MainVC+MultipleLists.swift in Sources */,
 				275978ED1EB8E26500DFA92F /* TextFieldMaxLength.swift in Sources */,
+				27F8C8AF1FDB074000903C22 /* MainVC+ShareDeleteList.swift in Sources */,
 				275978F31EB8E8C700DFA92F /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,7 +369,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -341,7 +379,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -383,7 +425,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -391,7 +435,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -426,13 +474,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PYE5SX7JJS;
 				INFOPLIST_FILE = "toDo-aMinimalistToDoApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bekahlynnbaker.toDoAMinimalistToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "toDo-aMinimalistToDoApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -445,12 +494,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PYE5SX7JJS;
 				INFOPLIST_FILE = "toDo-aMinimalistToDoApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bekahlynnbaker.toDoAMinimalistToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "toDo-aMinimalistToDoApp-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

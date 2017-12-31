@@ -9,125 +9,102 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
+import RealmSwift
 
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
-    @IBOutlet weak var reloadBtn: UIButton!
-    @IBAction func reloadBtnTapped(_ sender: Any) {
+  
+  let toDoItem = ToDoModel()
+  var items: Results<ToDoModel>! = nil
+  let realm = try! Realm()
+  var currentPage = 1
+  var list = ListModel()
+  var lists: Results<ListModel>! = nil
+  var isCreatingNewList = false
+
+  @IBOutlet weak var settingsContentView: RoundedView!
+  @IBOutlet weak var cancelSettingsView: UIButton!
+  @IBAction func cancelSettingsButtonTapped(_ sender: Any) {
+    if isCreatingNewList {
+      if self.currentPage > 1 {
+        self.currentPage -= 1
+        settingsView.alpha = 0
+        self.setUpEachList(isDeletingList: false)
+      }
+    } else {
+      UIView.animate(withDuration: 0.3) {
+        self.settingsView.alpha = 0
+      }
     }
-    @IBOutlet weak var textField: UITextField!
+    self.view.endEditing(true)
+  }
+  @IBOutlet weak var settingsView: UIVisualEffectView!
+  @IBAction func settingsButtonTapped(_ sender: Any) {
+    UIView.animate(withDuration: 0.3) {
+      self.settingsView.alpha = 1
+      self.settingsContentView.alpha = 1
+    }
+  }
+  @IBOutlet weak var titleTextField: UITextField!
+  @IBOutlet weak var saveButton: UIButton!
+  @IBAction func saveButtonTapped(_ sender: Any) {
+    let newList = ListModel()
+    newList.id = Int(NSDate().timeIntervalSince1970)
+    newList.title = titleTextField.text!
+    do {
+      try self.realm.write({
+        self.realm.add(newList, update: true)
+        self.isCreatingNewList = false
+        self.lists = self.realm.objects(ListModel.self).sorted(byKeyPath: "id", ascending: true)
+      })
+    } catch let error {
+      print(error)
+    }
+    UIView.animate(withDuration: 0.3) {
+      self.settingsView.alpha = 0
+    }
+    self.view.endEditing(true)
+    setUpEachList(isDeletingList: false)
+  }
+  
+
+  @IBAction func deleteButtonTapped(_ sender: Any) {
+    deleteButtonTapped()
+  }
+  
+  
+  @IBAction func shareButtonTapped(_ sender: Any) {
+    shareButtonTapped()
+  }
+  
+
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addBtn: UIButton!
-    @IBAction func addBtnTapped(_ sender: Any) {
-        if self.textField.text != "" {
-            if let newItemString = self.textField.text {
-                uploadNewToDoItem(item: newItemString)
-            }
-        } else {
-            print("No item to upload")
-        }
-        self.textFieldIsNotSelected()
-    }
-    @IBOutlet weak var cancelBtn: UIButton!
-    @IBAction func cancelBtnTapped(_ sender: Any) {
-        self.tableView.setEditing(false, animated: true)
-        if self.isSelectingToShare {
-            self.isSelectingToShare = false
-        }
-        if self.isSelectingToDelete {
-            self.isSelectingToDelete = false
-        }
-        self.shareBtn.setImage(UIImage(named: "more-dots"), for: .normal)
-        self.shareBtn.setTitle(nil, for: .normal)
-        self.cancelBtn.alpha = 0
-    }
-    var isSelectingToShare = false
-    var isSelectingToDelete = false
-    var stringToShare = ""
-    @IBOutlet weak var shareBtn: UIButton!
-    @IBAction func shareBtnTapped(_ sender: Any) {
-        if !isSelectingToShare && !isSelectingToDelete {
-            let alert = UIAlertController(title:nil, message: nil, preferredStyle: .actionSheet)
-            let share = UIAlertAction(title: "Share", style: .default, handler: { (_) -> Void in
-                //share action
-                self.cancelBtn.alpha = 1
-                self.isSelectingToShare = true
-                self.tableView.setEditing(true, animated: true)
-                self.shareBtn.setTitle("Share", for: .normal)
-                self.shareBtn.setImage(nil, for: .normal)
-            })
-            alert.addAction(share)
-            let delete = UIAlertAction(title: "Delete", style: .destructive, handler: { (_) -> Void in
-                //delete action
-                self.cancelBtn.alpha = 1
-                self.isSelectingToDelete = true
-                self.tableView.setEditing(true, animated: true)
-                self.shareBtn.setTitle("Delete", for: .normal)
-                self.shareBtn.setImage(nil, for: .normal)
-            })
-            alert.addAction(delete)
-            let  cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) -> Void in
-            }
-            alert.addAction(cancel)
-            alert.popoverPresentationController?.sourceView = self.view
-            alert.popoverPresentationController?.sourceRect = (sender as AnyObject).bounds
-            
-            self.present(alert, animated: true, completion: nil)
-        } else if isSelectingToShare {
-            self.getItemsToShare { (successGettingItemsToShare) in
-                if successGettingItemsToShare {
-                    let controller = UIActivityViewController(activityItems: [self.stringToShare], applicationActivities: nil)
-                    controller.popoverPresentationController?.sourceView = self.view
-                    controller.popoverPresentationController?.sourceRect = (sender as AnyObject).bounds
-                    
-                    self.present(controller, animated: true, completion: nil)
-                    self.tableView.setEditing(false, animated: true)
-                    self.isSelectingToShare = false
-                    self.shareBtn.setImage(UIImage(named: "more-dots"), for: .normal)
-                    self.shareBtn.setTitle(nil, for: .normal)
-                    self.cancelBtn.alpha = 0
-                } else {
-                    print("Unable to get items to share")
-                }
-            }
-        } else if isSelectingToDelete {
-                let alert = UIAlertController(title: "Are you sure you want to delete these items?", message: "You will not be able to get these back once they are deleted.", preferredStyle: UIAlertControllerStyle.alert)
-                let yes = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
-                    self.getItemsToDelete { (successDeleting) in
-                        if successDeleting {
-                            self.tableView.reloadData()
-                            self.tableView.setEditing(false, animated: true)
-                            self.isSelectingToDelete = false
-                            self.shareBtn.setImage(UIImage(named: "more-dots"), for: .normal)
-                            self.shareBtn.setTitle(nil, for: .normal)
-                            self.cancelBtn.alpha = 0
-                        } else {
-                            print("Unable to delete data, try again")
-                        }
-                    }
-                })
-                let no = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                alert.addAction(yes)
-                alert.addAction(no)
-                alert.popoverPresentationController?.sourceView = self.view
-                alert.popoverPresentationController?.sourceRect = (sender as AnyObject).bounds
-            
-                self.present(alert, animated: true, completion: nil)
-            }
-    }
-    var toDoList = [ToDoItem]()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 45
-        tableView.isEditing = false
-        textField.delegate = self
-        textField.returnKeyType = UIReturnKeyType.done
-        addBtn.alpha = 0
-        reloadBtn.alpha = 0
-        activitySpinner.alpha = 0
-        cancelBtn.alpha = 0
-        anonymouslyLoginOrCreateUserInFirebase()
-    }
+
+  @IBOutlet weak var pageLabel: UILabel!
+  var pages = [Int]()
+  
+// View Did Load
+  var toDoList = [ToDoItem]()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.rowHeight = 45
+    tableView.isEditing = false
+    textField.delegate = self
+    textField.returnKeyType = UIReturnKeyType.send
+    titleTextField.delegate = self
+    
+    let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
+    swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+    self.view.addGestureRecognizer(swipeLeft)
+    
+    let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
+    swipeRight.direction = UISwipeGestureRecognizerDirection.right
+    self.view.addGestureRecognizer(swipeRight)
+    transferItemsFromFirebaseToRealm()
+    self.items = self.realm.objects(ToDoModel.self).filter("list = %@", currentPage).sorted(byKeyPath: "id", ascending: true) 
+//    UserDefaults.standard.set(false, forKey: "hasTransferredFromFirebaseToRealm")
+  }
 }
