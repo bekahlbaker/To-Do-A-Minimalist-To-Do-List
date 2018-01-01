@@ -13,6 +13,7 @@ import RealmSwift
 extension MainVC {
  
   @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+    textFieldIsNotSelected()
     if let swipeGesture = gesture as? UISwipeGestureRecognizer {
       switch swipeGesture.direction {
       case UISwipeGestureRecognizerDirection.right:
@@ -32,6 +33,11 @@ extension MainVC {
   @objc func setUpEachList(isDeletingList: Bool) {
     self.pages = []
     self.lists = self.realm.objects(ListModel.self).sorted(byKeyPath: "id", ascending: true)
+    print("LISTS", self.lists)
+    if lists.count >= currentPage {
+      currentListID = lists[currentPage - 1].id
+      self.items = self.realm.objects(ToDoModel.self).filter("list = %@", currentListID).sorted(byKeyPath: "id", ascending: true)
+    }
     
     var x = 1
     for list in lists {
@@ -52,8 +58,6 @@ extension MainVC {
                                     size: 17.0)!, range: range)
       self.pageLabel.attributedText = attributeString
     }
-    
-    self.items = self.realm.objects(ToDoModel.self).filter("list = %@", currentPage).sorted(byKeyPath: "id", ascending: true)
 
     tableView.reloadData()
     

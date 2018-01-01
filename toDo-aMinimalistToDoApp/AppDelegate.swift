@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             // Fallback on earlier versions
         }
+
+      
         return true
     }
 

@@ -58,10 +58,12 @@ extension MainVC {
   }
   
   func downloadData(completionHandler:@escaping (Bool) -> Void) {
+    print("DOWNLOADING DATA")
     self.toDoList = []
     DataService.ds.REF_CURRENT_USER.keepSynced(true)
       DataService.ds.REF_CURRENT_USER.observeSingleEvent(of: .value, with: { (snapshot) in
         if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
+          print("SNAPSHOT", snapshot)
           let newList = ListModel()
           do {
             try self.realm.write({
@@ -86,8 +88,6 @@ extension MainVC {
                 try self.realm.write({
                   self.realm.add(newItem, update: true)
                   print(newItem)
-                  UserDefaults.standard.set(true, forKey: "hasTransferredFromFirebaseToRealm")
-                  UserDefaults.standard.synchronize()
                 })
               }catch let error {
                 print(error)
@@ -95,8 +95,9 @@ extension MainVC {
               }
             }
         }
-        self.setUpEachList(isDeletingList: false)
-        self.tableView.reloadData()
+          UserDefaults.standard.set(true, forKey: "hasTransferredFromFirebaseToRealm")
+          UserDefaults.standard.synchronize()
+          self.setUpEachList(isDeletingList: false)
       }
       })
   }

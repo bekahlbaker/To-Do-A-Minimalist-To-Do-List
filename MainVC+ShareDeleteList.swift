@@ -15,6 +15,7 @@ extension MainVC {
   
   func deleteButtonTapped() {
     let alert = UIAlertController(title: "Do you want to delete this list?", message: "You will not be able to get this list back after it is deleted.", preferredStyle: UIAlertControllerStyle.alert)
+    print("LIST TO DELETE", self.lists[self.currentPage - 1])
     let yes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
       do {
         try self.realm.write({

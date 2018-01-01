@@ -19,7 +19,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
   var currentPage = 1
   var list = ListModel()
   var lists: Results<ListModel>! = nil
+  var currentListID = Int()
   var isCreatingNewList = false
+  var isTyping = false
 
   @IBOutlet weak var settingsContentView: RoundedView!
   @IBOutlet weak var cancelSettingsView: UIButton!
@@ -83,6 +85,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
 
   @IBOutlet weak var pageLabel: UILabel!
   var pages = [Int]()
+
+
   
 // View Did Load
   var toDoList = [ToDoItem]()
@@ -93,8 +97,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     tableView.rowHeight = 45
     tableView.isEditing = false
     textField.delegate = self
-    textField.returnKeyType = UIReturnKeyType.send
     titleTextField.delegate = self
+    textField.returnKeyType = UIReturnKeyType.done
+    titleTextField.returnKeyType = UIReturnKeyType.done
     
     let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
     swipeLeft.direction = UISwipeGestureRecognizerDirection.left
@@ -103,8 +108,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
     swipeRight.direction = UISwipeGestureRecognizerDirection.right
     self.view.addGestureRecognizer(swipeRight)
+    print("VIEW DID LOAD")
     transferItemsFromFirebaseToRealm()
-    self.items = self.realm.objects(ToDoModel.self).filter("list = %@", currentPage).sorted(byKeyPath: "id", ascending: true) 
+    self.items = self.realm.objects(ToDoModel.self).filter("list = %@", currentPage).sorted(byKeyPath: "id", ascending: true)
 //    UserDefaults.standard.set(false, forKey: "hasTransferredFromFirebaseToRealm")
   }
 }
