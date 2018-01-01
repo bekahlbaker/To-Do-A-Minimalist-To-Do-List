@@ -31,11 +31,13 @@ extension MainVC {
   }
   
   @objc func setUpEachList(isDeletingList: Bool) {
+    lightThemeButton.layer.borderWidth = 0
+    darkThemeButton.layer.borderWidth = 0
     self.pages = []
     self.lists = self.realm.objects(ListModel.self).sorted(byKeyPath: "id", ascending: true)
-    print("LISTS", self.lists)
     if lists.count >= currentPage {
       currentListID = lists[currentPage - 1].id
+      setUpTheme(theme: lists[currentPage - 1].theme)
       self.items = self.realm.objects(ToDoModel.self).filter("list = %@", currentListID).sorted(byKeyPath: "id", ascending: true)
     }
     

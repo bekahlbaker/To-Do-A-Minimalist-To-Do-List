@@ -20,6 +20,8 @@
 		275978F11EB8E40200DFA92F /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275978F01EB8E40200DFA92F /* ToDoItem.swift */; };
 		275978F31EB8E8C700DFA92F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275978F21EB8E8C700DFA92F /* DataService.swift */; };
 		275978F51EB8E99E00DFA92F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 275978F41EB8E99E00DFA92F /* GoogleService-Info.plist */; };
+		279AAB721FFAD8CD0063190E /* MainVC+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279AAB711FFAD8CD0063190E /* MainVC+Theme.swift */; };
+		279AAB741FFADE850063190E /* MainVC+ButtonFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279AAB731FFADE850063190E /* MainVC+ButtonFuncs.swift */; };
 		27C577101EBA4A9F00745656 /* HTTPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C5770F1EBA4A9F00745656 /* HTTPService.m */; };
 		27C577151EBA59D200745656 /* MainVC+LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C577141EBA59D200745656 /* MainVC+LoginUser.swift */; };
 		27F8C8A91FD9A54B00903C22 /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F8C8A81FD9A54B00903C22 /* ToDoModel.swift */; };
@@ -46,6 +48,8 @@
 		275978F01EB8E40200DFA92F /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		275978F21EB8E8C700DFA92F /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		275978F41EB8E99E00DFA92F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		279AAB711FFAD8CD0063190E /* MainVC+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC+Theme.swift"; sourceTree = "<group>"; };
+		279AAB731FFADE850063190E /* MainVC+ButtonFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC+ButtonFuncs.swift"; sourceTree = "<group>"; };
 		27C5770F1EBA4A9F00745656 /* HTTPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPService.m; sourceTree = "<group>"; };
 		27C577111EBA4AAC00745656 /* HTTPService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPService.h; sourceTree = "<group>"; };
 		27C577121EBA4AE100745656 /* toDo-aMinimalistToDoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "toDo-aMinimalistToDoApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 				270BE2CF1EC0D72300531645 /* MainVC+Tableview.swift */,
 				27F8C8AC1FDB070800903C22 /* MainVC+MultipleLists.swift */,
 				27F8C8AE1FDB074000903C22 /* MainVC+ShareDeleteList.swift */,
+				279AAB711FFAD8CD0063190E /* MainVC+Theme.swift */,
+				279AAB731FFADE850063190E /* MainVC+ButtonFuncs.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -332,9 +338,11 @@
 				27F8C8AB1FDAF61700903C22 /* ListModel.swift in Sources */,
 				27F8C8B11FDB22D200903C22 /* RoundedButton.swift in Sources */,
 				27F8C8AD1FDB070800903C22 /* MainVC+MultipleLists.swift in Sources */,
+				279AAB741FFADE850063190E /* MainVC+ButtonFuncs.swift in Sources */,
 				275978ED1EB8E26500DFA92F /* TextFieldMaxLength.swift in Sources */,
 				27F8C8AF1FDB074000903C22 /* MainVC+ShareDeleteList.swift in Sources */,
 				275978F31EB8E8C700DFA92F /* DataService.swift in Sources */,
+				279AAB721FFAD8CD0063190E /* MainVC+Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,7 @@ class ListModel: Object {
   
   @objc dynamic var title = "New List"
   @objc dynamic var id = 1
-  @objc dynamic var theme: String!
+  @objc dynamic var theme = "light"
   
   override static func primaryKey() -> String? {
     return "id"
