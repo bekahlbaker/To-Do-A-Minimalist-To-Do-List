@@ -22,7 +22,12 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
   var currentListID = Int()
   var isCreatingNewList = false
   var isTyping = false
-
+  
+  @IBOutlet weak var onboardingView: UIVisualEffectView!
+  @IBAction func gotItButtonTapped(_ sender: Any) {
+    onboardingView.alpha = 0
+  }
+  
   @IBOutlet weak var settingsContentView: RoundedView!
   @IBOutlet weak var cancelSettingsView: UIButton!
   @IBAction func cancelSettingsButtonTapped(_ sender: Any) {
@@ -46,6 +51,11 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
       self.settingsContentView.alpha = 1
     }
   }
+  
+  @IBAction func helpButtonTapped(_ sender: Any) {
+    onboardingView.alpha = 1
+  }
+  
   @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var saveButton: UIButton!
   @IBAction func saveButtonTapped(_ sender: Any) {

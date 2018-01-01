@@ -15,11 +15,13 @@ extension MainVC {
   func transferItemsFromFirebaseToRealm() {
     if UserDefaults.standard.bool(forKey: "hasTransferredFromFirebaseToRealm") {
         print("NOT first launch")
+      self.onboardingView.alpha = 0
       setUpEachList(isDeletingList: false)
     } else {
       print("FIRST launch")
   //1. Login User and Download Data
   //2. Save to Realm
+      self.onboardingView.alpha = 1
       self.anonymouslyLoginOrCreateUserInFirebase()
     }
   }
